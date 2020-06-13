@@ -1,7 +1,8 @@
 package es.codeurjc.ais.tictactoe;
 
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +22,7 @@ class TicTacToeGameTestUnitarios {
 		// j1
 		partida.mark(7);
 		// j2
-		partida.mark(2);
+		partida.mark(6);
 		// j1
 		partida.mark(4);
 		// j2
@@ -32,7 +33,7 @@ class TicTacToeGameTestUnitarios {
 	public void primerJugadorGana() {
 		// j1
 		partida.mark(1);
-		assertEquals(partida.checkWinner().pos.length,3);
+		assertEquals(3,partida.checkWinner().pos.length);
 		assertEquals(partida.checkWinner().win,true);
 		assertEquals(partida.checkDraw(),false);
 	}
@@ -43,7 +44,7 @@ class TicTacToeGameTestUnitarios {
 		// j2
 		partida.mark(0);
 
-		assertEquals(partida.checkWinner().pos.length,3);
+		assertEquals(null,partida.checkWinner().pos);
 		assertEquals(partida.checkWinner().win,false);
 		assertEquals(partida.checkDraw(),false);
 	}
@@ -58,8 +59,8 @@ class TicTacToeGameTestUnitarios {
 		// j2
 		partida.mark(1);
 		// j1
-		partida.mark(9);
-		assertEquals(partida.checkDraw(),true);
+		partida.mark(0);
+		assertThat(partida.checkDraw(), is(true));
 	}
 
 }
