@@ -41,12 +41,12 @@ public class Connection {
 	}
 
 	public void sendEvent(EventType type, Object value) {
-		
+
 		Event event = new Event();
 
 		event.type = type;
 		event.data = value;
-		
+
 		sendEvent(event);
 	}
 

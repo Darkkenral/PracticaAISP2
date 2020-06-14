@@ -106,15 +106,15 @@ public class TicTacToeGame {
 	}
 
 	public WinnerResult checkWinner() {
-		
+
 		Player player = this.players.get(this.currentTurn);
 
 		int[] winPos = board.getCellsIfWinner(player.getLabel());
-		
+
 		WinnerResult result = new WinnerResult();
 		result.win = (winPos != null);
 		result.pos = winPos;
-		
+
 		return result;
 	}
 
@@ -131,7 +131,7 @@ public class TicTacToeGame {
 
 				this.players.add(player);
 				this.ready = this.players.size() == 2;
-				
+
 				this.sendEvent(EventType.JOIN_GAME, players);
 
 				if (this.ready) {
@@ -145,11 +145,11 @@ public class TicTacToeGame {
 	public List<Player> getPlayers() {
 		return players;
 	}
-	
+
 	public void addConnection(Connection connection) {
 		this.connections.add(connection);
 	}
-	
+
 	public void restart() {
 
 		board = new Board();
@@ -161,9 +161,9 @@ public class TicTacToeGame {
 
 	private void sendEvent(EventType type, Object value) {
 
-		for(Connection c : connections) {
+		for (Connection c : connections) {
 			c.sendEvent(type, value);
 		}
 	}
-	
+
 }

@@ -10,12 +10,13 @@ class TicTacToeGameTestUnitarios {
 	TicTacToeGame partida;
 	Player j1;
 	Player j2;
+
 	// Automatiza la partida de tal modo que la deja en un estado critico de
 	// victoria,derrota o empate
 	@BeforeEach
 	public void iniciacionEstadosPrueba() {
-		 this.j1 = new Player(1, "jugador1", "Marcos");
-		 this.j2 = new Player(2, "jugador2", "Juan");
+		this.j1 = new Player(1, "jugador1", "Marcos");
+		this.j2 = new Player(2, "jugador2", "Juan");
 		this.partida = new TicTacToeGame();
 		partida.addPlayer(j1);
 		partida.addPlayer(j2);
@@ -29,14 +30,16 @@ class TicTacToeGameTestUnitarios {
 		partida.mark(3);
 
 	}
+
 	@Test
 	public void primerJugadorGana() {
 		// j1
 		partida.mark(1);
-		assertEquals(3,partida.checkWinner().pos.length);
-		assertEquals(partida.checkWinner().win,true);
-		assertEquals(partida.checkDraw(),false);
+		assertEquals(3, partida.checkWinner().pos.length);
+		assertEquals(partida.checkWinner().win, true);
+		assertEquals(partida.checkDraw(), false);
 	}
+
 	@Test
 	public void primerJugadorPierde() {
 		// j1
@@ -44,10 +47,11 @@ class TicTacToeGameTestUnitarios {
 		// j2
 		partida.mark(0);
 
-		assertEquals(null,partida.checkWinner().pos);
-		assertEquals(partida.checkWinner().win,false);
-		assertEquals(partida.checkDraw(),false);
+		assertEquals(null, partida.checkWinner().pos);
+		assertEquals(partida.checkWinner().win, false);
+		assertEquals(partida.checkDraw(), false);
 	}
+
 	@Test
 	public void empate() {
 		// j1
